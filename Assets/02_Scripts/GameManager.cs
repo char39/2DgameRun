@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public GameObject obj_gameover;
     public Text text_gameover;
+    public Text text_score;
     public int score = 1;
 
 /*
@@ -61,11 +62,15 @@ public class GameManager : MonoBehaviour
     {
         obj_gameover = GameObject.Find("Canvas_UI").transform.GetChild(1).gameObject;
         text_gameover = GameObject.Find("Canvas_UI").transform.GetChild(1).GetComponent<Text>();
+        text_score = GameObject.Find("Canvas_UI").transform.GetChild(0).GetComponent<Text>();
     }
     void Update()
     {
         if (isGameOver)
+        {
+            text_score.enabled = false;
             obj_gameover.SetActive(true);
+        }
         ReStart();
     }
 
@@ -75,12 +80,14 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = false;
             obj_gameover.SetActive(false);
+            text_score.enabled = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬을 다시 로드
         }
     }
     public void AddScore(int newScore)
     {
         score += newScore;
+        text_score.text = $"Score : <color=#FFAAAA>{score}</color>";
         text_gameover.text = $"Score : <color=#FFAAAA>{score}</color>";
     }
 }

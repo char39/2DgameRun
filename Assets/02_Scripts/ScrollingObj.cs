@@ -8,7 +8,7 @@ public class ScrollingObj : MonoBehaviour
     private float speed;
     void Start()
     {
-        speed = 10.0f;
+        speed = 6f;
     }
 
     void Update()

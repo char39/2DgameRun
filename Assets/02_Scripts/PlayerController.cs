@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isDie) return;
+        if (isDie)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0) && jumpCount < 2)
         {
             jumpCount++;
